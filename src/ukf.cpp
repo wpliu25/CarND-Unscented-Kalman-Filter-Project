@@ -276,6 +276,7 @@ void UKF::UpdateLidar(MeasurementPackage meas_package) {
   You'll also need to calculate the lidar NIS.
   */
 
+
 }
 
 /**
@@ -345,6 +346,9 @@ void UKF::UpdateRadar(MeasurementPackage meas_package) {
 
     //create example vector for incoming radar measurement
     VectorXd z = VectorXd(n_z);
+    z << meas_package.raw_measurements_(0),
+         meas_package.raw_measurements_(1),
+         meas_package.raw_measurements_(2);
 
     //create matrix for cross correlation Tc
     MatrixXd Tc = MatrixXd(n_x_, n_z);
